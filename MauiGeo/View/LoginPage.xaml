@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiGeo.LoginPage"
+             xmlns:viewmodel="clr-namespace:MauiGeo.ViewModel"
+             x:DataType="viewmodel:LoginPageViewModel"
+             Title="Welcome to FindMe">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,20,30,0">
+
+            <VerticalStackLayout IsVisible="{Binding IsNotLoggedIn}">
+
+                <Label Text="Login" FontAttributes="Bold" FontSize="15"
+                       Margin="0,0,0,20"/>
+                
+                <Label Text="Email"/>
+
+                <Frame Padding="10,0,0,0"
+                   BackgroundColor="LightGray">
+                    
+                    <Entry Text="{Binding Email}"
+                           Placeholder="Enter email"
+                           PlaceholderColor="DarkGray"
+                           IsSpellCheckEnabled="False"
+                           IsTextPredictionEnabled="False"
+                           BackgroundColor="LightGray"/>
+                    
+                </Frame>
+
+                <Label Text="Password"
+                   Margin="0,20,0,0"/>
+
+                <Frame Padding="10,0,0,0"
+                   BackgroundColor="LightGray">
+                    
+                    <Entry Text="{Binding Password}"
+                           Placeholder="Enter password"
+                           PlaceholderColor="DarkGray"
+                           IsPassword="True"
+                           IsSpellCheckEnabled="False"
+                           IsTextPredictionEnabled="False"
+                           BackgroundColor="LightGray"/>
+                </Frame>
+
+            </VerticalStackLayout>
+            
+
+
+
+
+
+
+            <Button
+                x:Name="Login"
+                Text="Login"
+                Margin="0,20,0,20"
+                IsVisible="{Binding IsNotLoggedIn}"
+                Command="{Binding LoginCommand}"/>
+
+            <Button
+                x:Name="Logut"
+                Text="Log out"
+                Margin="0,20,0,20"
+                IsVisible="{Binding IsLoggedIn}"
+                Command="{Binding LogOutCommand}"/>
+
+            <Button
+                x:Name="Register"
+                Text="Register"
+                Margin="0,20,0,20"
+                IsVisible="{Binding IsNotLoggedIn}"
+                Command="{Binding RegisterCommand}"/>
+
+            <Label Text="{Binding Email}"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding IsLoggedIn}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

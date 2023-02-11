@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiGeo.BeaconPage"
+             xmlns:viewmodel="clr-namespace:MauiGeo.ViewModel"
+             x:DataType="viewmodel:BeaconPageViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,30,30,0">
+
+            <Button
+                Text="Start Location Sharing"
+                Command="{Binding StartLocationServiceCommand}"
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsNotRunning}"
+                BackgroundColor="ForestGreen"/>
+
+            <Button 
+                Text="Stop Location Sharing" 
+                Command="{Binding StopLocationServiceCommand}"
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsRunning}"
+                BackgroundColor="OrangeRed">
+            </Button>
+
+            <Label Text="Successful api-calls"
+                   IsVisible="{Binding IsRunning}"
+                   Margin="0,25,0,0"
+                   FontAttributes="Bold"/>
+            <Label Text="{Binding SuccessfulApiCalls}" TextColor="Green" IsVisible="{Binding IsRunning}" />
+
+            <Label Text="Failed api-calls"
+                   IsVisible="{Binding IsRunning}"
+                   Margin="0,15,0,0"
+                   FontAttributes="Bold"/>
+            <Label Text="{Binding FailedApiCalls}" TextColor="Red" IsVisible="{Binding IsRunning}" />
+
+            <Label Text="Latitude" 
+                   IsVisible="{Binding IsRunning}"
+                   Margin="0,15,0,0"
+                   FontAttributes="Bold"/>
+            <Label Text="{Binding LastLocation.Latitude}" IsVisible="{Binding IsRunning}" />
+
+            <Label Text="Longitude"
+                   IsVisible="{Binding IsRunning}"
+                   Margin="0,15,0,0"
+                   FontAttributes="Bold"/>
+            <Label Text="{Binding LastLocation.Longitude}" 
+                   IsVisible="{Binding IsRunning}" />
+
+            
+            <Label Text="Timestamp"
+                   IsVisible="{Binding IsRunning}"
+                   Margin="0,15,0,0"
+                   FontAttributes="Bold"/>
+            <Label Text="{Binding LastLocation.Timestamp}"
+                   IsVisible="{Binding IsRunning}" />
+
+            <Label Text="Accuracy"
+                   IsVisible="{Binding IsRunning}"
+                   Margin="0,15,0,0"
+                   FontAttributes="Bold"/>
+            <Label Text="{Binding LastLocation.Accuracy}" 
+                   IsVisible="{Binding IsRunning}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

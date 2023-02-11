@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiGeo.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiGeo"
+    Shell.TabBarIsVisible="False">
+
+    <Shell.FlyoutHeader>
+        <Image Source="location.svg" HeightRequest="150" Margin="0,20,0,20"/>
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <Button Text="Log out" Clicked="Button_Clicked" Margin="20,0,20,20" />
+    </Shell.FlyoutFooter>
+
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate local:LoginPage}"
+        Route="LoginPage" 
+        Shell.FlyoutBehavior="Disabled"
+        Shell.TabBarIsVisible="False"
+        FlyoutItemIsVisible="False"/>
+
+    <FlyoutItem Route="BeaconPage" FlyoutDisplayOptions="AsMultipleItems">
+
+        <ShellContent
+        Title="Share your location"
+            Icon="beacon.svg"
+        ContentTemplate="{DataTemplate local:BeaconPage}"
+        Route="BeaconPage" />
+
+        <ShellContent
+        Title="Manage Followers"
+            Icon="followers.svg"
+        ContentTemplate="{DataTemplate local:FollowersPage}"
+        Route="FollowersPage" />
+
+        <ShellContent
+        Title="Track your friends"
+            Icon="tracking.svg"
+        ContentTemplate="{DataTemplate local:TrackingPage}"
+        Route="TrackingPage" />
+        
+    </FlyoutItem>
+
+
+</Shell>

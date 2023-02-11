@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiGeo.FollowersPage"
+             xmlns:viewmodel="clr-namespace:MauiGeo.ViewModel"
+             x:DataType="viewmodel:FollowersPageViewModel"
+             xmlns:model="clr-namespace:MauiGeo.Model">
+
+    <Grid RowDefinitions="*,200"
+        Padding="30,30,30,0">
+
+        <CollectionView Grid.Row="0" ItemsSource="{Binding Followers}" IsVisible="{Binding IsNotLoading}" VerticalOptions="Start">
+            <CollectionView.Header>
+                <Label Text="Your followers" FontSize="20" Margin="0,0,0,20"/>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:UserName">
+
+                    <Grid ColumnDefinitions="*,75" Margin="0,0,0,10">
+                        <Label Grid.Column="0"
+                               Text="{Binding Email}"
+                               TextColor="Black"
+                               Margin="0,0,0,10"/>
+
+                        <Button Grid.Column="1"
+                                Text="Delete"
+                                BackgroundColor="OrangeRed"
+                                Padding="0,0,0,0"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:FollowersPageViewModel}}, Path=RemoveFollowerCommand}"
+                                CommandParameter="{Binding .}"/>
+                    </Grid>
+
+                    
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <ActivityIndicator
+            Grid.Row="0"
+            HorizontalOptions="FillAndExpand"
+            IsRunning="{Binding IsLoading}"
+            IsVisible="{Binding IsLoading}"
+            VerticalOptions="Start"
+            Color="Teal"/>
+
+
+        <VerticalStackLayout Grid.Row="1" Spacing="15">
+            
+            <Label Text="Add new follower" FontSize="20"/>
+            
+            <Frame Padding="10,0,0,0"
+                   BackgroundColor="LightGray">
+
+                <Entry Text="{Binding Email}"
+                       Placeholder="Enter users email"
+                        PlaceholderColor="DarkGray"
+                        IsSpellCheckEnabled="False"
+                        IsTextPredictionEnabled="False"
+                        BackgroundColor="LightGray"/>
+            </Frame>
+            
+            <Button Text="Add follower" Command="{Binding AddFollowerCommand}"/>
+
+            <Label x:Name="Alert" Text="{Binding Message}" TextColor="Black"/>
+        </VerticalStackLayout>
+        
+
+
+    </Grid>
+
+</ContentPage>

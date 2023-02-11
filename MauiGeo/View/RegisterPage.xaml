@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiGeo.RegisterPage"
+             xmlns:viewmodel="clr-namespace:MauiGeo.ViewModel"
+             x:DataType="viewmodel:RegisterPageViewModel"
+             Title="Register">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,20,30,0">
+
+            <VerticalStackLayout>
+
+                <Label Text="Email"/>
+
+                <Frame Padding="10,0,0,0"
+                   BackgroundColor="LightGray">
+                    
+                    <Entry Text="{Binding Email}"
+                           Placeholder="Enter email"
+                           PlaceholderColor="DarkGray"
+                           IsSpellCheckEnabled="False"
+                           IsTextPredictionEnabled="False"
+                           BackgroundColor="LightGray"/>
+
+                </Frame>
+
+                <Label Text="Password"
+                   Margin="0,20,0,0"/>
+
+                <Frame Padding="10,0,0,0"
+                   BackgroundColor="LightGray">
+                    
+                    <Entry Text="{Binding Password}"
+                           Placeholder="Enter password"
+                           PlaceholderColor="DarkGray"
+                           IsPassword="True"
+                           IsSpellCheckEnabled="False"
+                           IsTextPredictionEnabled="False"
+                           BackgroundColor="LightGray"/>
+                </Frame>
+
+                <Label Text="Confirm password"
+                   Margin="0,20,0,0"/>
+
+                <Frame Padding="10,0,0,0"
+                   BackgroundColor="LightGray">
+
+                    <Entry Text="{Binding ConfirmPassword}"
+                           Placeholder="Confirm password"
+                           PlaceholderColor="DarkGray"
+                           IsPassword="True"
+                           IsSpellCheckEnabled="False"
+                           IsTextPredictionEnabled="False"
+                           BackgroundColor="LightGray"/>
+                </Frame>
+
+            </VerticalStackLayout>
+
+            <Label Text="Password must be atleast 6 characters long and contain at least one numeric, special, uppercase and lowercase character. "
+                   Margin="0,10,0,0"/>
+
+            <Button
+                x:Name="Register"
+                Text="Register"
+                Margin="0,20,0,20"
+                IsVisible="{Binding IsNotLoggedIn}"
+                Command="{Binding RegisterCommand}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

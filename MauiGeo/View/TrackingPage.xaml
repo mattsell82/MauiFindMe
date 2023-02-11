@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiGeo.TrackingPage"
+             xmlns:viewmodel="clr-namespace:MauiGeo.ViewModel"
+             x:DataType="viewmodel:TrackingPageViewModel"
+             xmlns:model="clr-namespace:MauiGeo.Model">
+
+    <Grid RowDefinitions="50,*,70" RowSpacing="10">
+        
+        <Picker Grid.Row="0"
+                x:Name="userPicker" 
+                Title="Select a friend" 
+                ItemsSource="{Binding Following}" 
+                SelectedItem="{Binding SelectedUser}"
+                ItemDisplayBinding="{Binding Email}"
+                HeightRequest="50"
+                SelectedIndexChanged="userPicker_SelectedIndexChanged"
+                Margin="10,0,10,0"/>
+
+        <Map Grid.Row="1"
+             x:Name="myMap"
+             IsVisible="{Binding IsNotLoading}"
+             IsZoomEnabled="True"/>
+
+
+
+        <HorizontalStackLayout Grid.Row="2" Spacing="10" Padding="10,0,10,20">
+            
+            <Button Text="Start Live tracking"
+                Clicked="Button_StartTimer_Clicked" 
+                IsVisible="{Binding IsTimerNotRunning}"
+                HorizontalOptions="Center"
+                BackgroundColor="ForestGreen"/>
+
+            <Button Text="Stop Live tracking"
+                Clicked="Button_StopTimer_Clicked"
+                IsVisible="{Binding IsTimerRunning}"
+                HorizontalOptions="Center"
+                BackgroundColor="OrangeRed"/>
+
+            <Button Text="Center"
+                    Clicked="Button_Center_Clicked"/>
+            
+            <Picker x:Name="mapPicker" 
+            Title="Select map type"
+            ItemsSource="{Binding MapTypes}"
+            SelectedItem="{Binding SelectedMapType}"
+            ItemDisplayBinding="{Binding .}"
+            HeightRequest="50"
+            SelectedIndexChanged="mapPicker_SelectedIndexChanged">
+
+            </Picker>
+
+        </HorizontalStackLayout>
+        
+
+
+
+
+        
+
+
+    </Grid>
+
+    <!--
+            <CollectionView Grid.Row="0" ItemsSource="{Binding Following}" IsVisible="{Binding IsNotLoading}" VerticalOptions="Start" SelectionMode="None">
+            
+            
+            
+            <CollectionView.Header>
+                <Label Text="Authorized followers" FontSize="20" Margin="0,0,0,20"/>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:UserName">
+
+                    
+                        <Label Text="{Binding Email}" TextColor="Black" Margin="0,0,0,10">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TrackingPageViewModel}}, Path=LastPositionsCommand}"
+                                        CommandParameter="{Binding .}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <ActivityIndicator
+            Grid.Row="0"
+            HorizontalOptions="FillAndExpand"
+            IsRunning="{Binding IsLoading}"
+            IsVisible="{Binding IsLoading}"
+            VerticalOptions="Start"
+            Color="Teal"/>
+    
+    -->
+
+
+
+</ContentPage>
