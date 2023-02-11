@@ -1,0 +1,8 @@
+﻿Create api_key.xml inside this folder.
+
+IT should contain:
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="api_key">YOUR_API_KEY_HERE</string>
+</resources>
