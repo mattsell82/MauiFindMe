@@ -2,6 +2,8 @@
 .NET Maui Android app for geolocation tracking and sharing.  
 Target framework: .Net 7  
   
+This app is designed to communicate with [FindMeApi](https://github.com/mattsell82/MauiFindMe).  
+  
 Originally a school project that I'm now continuing as a hobby project.  
   
 Features  
